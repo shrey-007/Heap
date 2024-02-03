@@ -1,10 +1,11 @@
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
+//given an array and k. return kth smallest element
 public class KthSmallestElement {
-    //you can simply sort an array in nlogn and return arr[k-1]
+    //method1=you can simply sort an array in nlogn and return arr[k-1]
 
-    //use max heap
+    //method2=use max heap
     static int func(int arr[],int k){
 
         //create max heap
@@ -30,6 +31,7 @@ public class KthSmallestElement {
         return maxHeap.peek();
 
     }
+    //method3=use quick select for most efficient algorithm
     public static void main(String[] args) {
         int arr[]={3,4,67,3,76,89,43,21,55,99,35,77};
         System.out.println(func(arr,5));
