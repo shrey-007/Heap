@@ -11,6 +11,7 @@ public class KthSmallestElement {
         //create max heap
         PriorityQueue<Integer> maxHeap=new PriorityQueue<>(Comparator.reverseOrder());
 
+        //iterate over whole array
         for (int i = 0; i < arr.length; i++) {
             //add current element
             maxHeap.add(arr[i]);
