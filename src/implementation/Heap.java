@@ -1,5 +1,7 @@
 package implementation;
 
+import java.util.Arrays;
+
 public class Heap {
     private int[] heap;
     private int size;
@@ -37,7 +39,7 @@ public class Heap {
         heap[spos] = tmp;
     }
 
-    // Heapify
+    // Heapify(it is same as deletion so it will take logn)
     private void maxHeapify(int pos) {
         if (!isLeaf(pos)) {
             if (heap[pos] < heap[leftChild(pos)] || heap[pos] < heap[rightChild(pos)]) {
@@ -52,7 +54,7 @@ public class Heap {
         }
     }
 
-    // Insertion
+    // Insertion(logn)
     public void insert(int element) {
         if (size >= maxSize) {
             return;
@@ -69,19 +71,36 @@ public class Heap {
 
     // Print the heap
     public void print() {
+        // point is , you don't always need to create the function to print array just use Arrays.toString function(arr)
+        // and print the string
         for (int i = 0; i < size; i++) {
             System.out.print(heap[i]+" ");
         }
         System.out.println();
     }
 
-    // Remove and return the max element from the heap
+    // Remove and return the max element from the heap(logn)
     public int remove() {
         int popped = heap[1];
         heap[1] = heap[size--];
         //remove function is same as maxHeapify
         maxHeapify(1);
         return popped;
+    }
+
+    // Build a max heap from an array of elements
+
+    //    O(n)
+    public void buildHeap(int[] arr) {
+        size = arr.length;
+
+        //jo array paas kiya hai usko heap ke array ka attribute banana hai
+        heap = Arrays.copyOf(arr, maxSize + 1);
+
+        for (int i = size / 2; i >= 1; i--) {
+            maxHeapify(i);
+        }
+
     }
 
     public static void main(String[] args) {
